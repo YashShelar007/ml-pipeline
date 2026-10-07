@@ -11,7 +11,7 @@ A chest CT scan classifier (VGG16 transfer learning, two classes) wrapped in a s
 
 ## Quickstart
 
-Not verified end to end: training needs a large dependency install (TensorFlow, PyTorch), a download from Google Drive and a long run. What I did verify: `pip install -e . --no-deps` and `import cnnClassifier` work, and `app.py` and `main.py` compile.
+Not verified end to end: training needs a large dependency install (TensorFlow, PyTorch), a download from Google Drive and a long run. Checked on 2026-10-07: `pip install -e . --no-deps` and `import cnnClassifier` work, and `app.py` and `main.py` compile.
 
 ```bash
 pip install -r requirements.txt
@@ -57,6 +57,7 @@ Built from July 2024 to April 2025 (first and last commit dates). Archived: no f
 - `requirements.txt` is mostly unpinned apart from `tensorflow==2.13.0`, `mlflow==2.13.2` and a few others. It lists PyTorch, which the code does not import.
 - The deploy job passes AWS keys into the container as environment variables. Prefer an instance role.
 - `setup.py` carries the original package metadata (author handle and repo name) from an earlier repo name.
+- The deploy workflow (`.github/workflows/main.yaml`) is manual-only (`workflow_dispatch`) and needs the AWS secrets listed above plus a self-hosted runner.
 
 ## License
 
