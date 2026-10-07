@@ -44,7 +44,7 @@ config/config.yaml + params.yaml
 - `params.yaml` holds the hyperparameters: image size 224x224x3, batch size 16, 2 epochs, learning rate 0.01, ImageNet weights, 2 classes.
 - `dvc.yaml` declares the same four stages with their dependencies, params and outputs; `scores.json` is the tracked metric. `.dvc/config` has no remote configured.
 - `Dockerfile` uses `python:3.8-slim-buster`, installs the requirements and runs `app.py`.
-- `.github/workflows/main.yaml` runs on pushes to `main`: placeholder CI, then build and push to ECR using repository secrets (`AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY`, `AWS_REGION`, `ECR_REPOSITORY_NAME`, `AWS_ECR_LOGIN_URI`), then a deploy job on a self-hosted runner that pulls and runs the image. It will fail in a fork without those secrets and a runner.
+- `.github/workflows/main.yaml` is manual-only (`workflow_dispatch`): placeholder CI, then build and push to ECR using repository secrets (`AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY`, `AWS_REGION`, `ECR_REPOSITORY_NAME`, `AWS_ECR_LOGIN_URI`), then a deploy job on a self-hosted runner that pulls and runs the image. It fails without those secrets and a runner.
 - `research/` holds the exploratory notebooks the stages were built from.
 
 ## Status
